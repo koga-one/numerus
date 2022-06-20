@@ -14,7 +14,7 @@ const Line = ({ answer }: Props) => {
 
   return (
     <p>
-      <span>{">"}</span> {finalAnswer.text}
+      <span className={`k-${finalAnswer.state}`}>{">"}</span> {finalAnswer.text}
     </p>
   );
 };

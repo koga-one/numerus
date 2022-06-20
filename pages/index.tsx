@@ -15,11 +15,17 @@ const Home: NextPage = () => {
   const router = useRouter();
   const numberEl: RefObject<HTMLInputElement> = createRef();
 
-  const handleNumber = () => {
-    const { value: number } = numberEl.current!;
+  const randomNumber = () => {
+    const number = Math.floor(Math.random() * 1000);
 
-    if (numberEl.current!.value == "")
-      router.push(`/?number=0`, undefined, { shallow: true });
+    if (isNaN(number)) router.push(`/?number=0`, undefined, { shallow: true });
+    else router.push(`/?number=${number}`, undefined, { shallow: true });
+  };
+
+  const handleNumber = () => {
+    const number = parseInt(numberEl.current!.value);
+
+    if (isNaN(number)) router.push(`/?number=0`, undefined, { shallow: true });
     else router.push(`/?number=${number}`, undefined, { shallow: true });
   };
 
@@ -33,6 +39,9 @@ const Home: NextPage = () => {
     if (typeof router.query.number === "string") {
       setN(parseInt(router.query.number));
       numberEl.current!.value = n.toString();
+    } else {
+      setN(0);
+      numberEl.current!.value = "0";
     }
   }, [handleNumber]);
 
@@ -50,6 +59,13 @@ const Home: NextPage = () => {
           placeholder="Enter a number..."
           onKeyDown={handleKeyDown}
         ></input>
+        <button
+          type="button"
+          onClick={randomNumber}
+          className="border-2 active:bg-ki transition border-katsu dark:border-kami pointer-events-auto rounded-md text-xl lg:text-2xl bg-kami text-katsu italic px-4 py-1"
+        >
+          <p>Random</p>
+        </button>
         <button
           type="button"
           onClick={handleNumber}

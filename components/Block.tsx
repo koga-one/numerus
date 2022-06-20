@@ -35,7 +35,10 @@ const Block = ({ title, version, answers, n }: Props) => {
         )}
       </div>
       <div className="flex flex-col px-4 py-2 gap-1">
-        {toggled && answers.map((answer) => <Line answer={answer(n)} />)}
+        {toggled &&
+          answers.map((answer, index) => (
+            <Line key={index} answer={answer(n)} />
+          ))}
         {!toggled && (
           <p className="italic text-gure font-black">{"-"} Turned off...</p>
         )}

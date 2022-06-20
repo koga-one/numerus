@@ -12,6 +12,7 @@ const Layout = ({ children, title }: Props) => {
     <div>
       <Head>
         <title>{title + " // NUMERUS"}</title>
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Header />
       <div>{children}</div>
