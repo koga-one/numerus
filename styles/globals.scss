@@ -7,7 +7,7 @@
 
 html,
 body {
-  @apply bg-kami dark:bg-katsu;
+  @apply bg-kami dark:bg-katsu text-katsu dark:text-kami font-jetbrains;
 }
 
 h1,
@@ -15,7 +15,6 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p {
-  @apply text-katsu dark:text-kami font-jetbrains;
+h6 {
+  @apply text-ki;
 }
