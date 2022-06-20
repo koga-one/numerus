@@ -39,7 +39,7 @@ const Home: NextPage = () => {
   return (
     <Layout title="HOME">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 container mx-auto px-1 gap-4">
-        <Block title="Primes" version={0.1} answers={[IsEven(n)]} />
+        <Block title="Primes" version={0.1} answers={[IsEven]} n={n} />
       </div>
       <div className="flex bottom-1 lg:bottom-8 h-12 lg:h-16 sticky px-1 my-4 lg:my-16 pointer-events-none z-50 content-center place-content-center mx-auto container gap-1">
         <input
