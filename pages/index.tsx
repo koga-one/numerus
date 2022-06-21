@@ -54,10 +54,10 @@ const Home: NextPage = () => {
       setN(parseInt(router.query.number));
       numberEl.current!.value = n.toString();
     } else {
-      numberEl.current!.value = "0";
-      minEl.current!.value = "";
-      maxEl.current!.value = "";
       setN(0);
+      numberEl.current!.value = "0";
+      minEl.current!.value = "0";
+      maxEl.current!.value = "1000";
     }
     if (
       typeof router.query.min === "string" &&
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 container mx-auto px-1 gap-4">
         <Block title="Primes" version={0.1} answers={[IsEven]} n={n} />
       </div>
-      <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-48 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
+      <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-40 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
         <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 bg-kami rounded-md border-2">
           <input
             ref={minEl}
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
         <button
           type="button"
           onClick={handleNumber}
-          className="border-2 order-1 lg:order-none row-span-2 active:bg-ki transition border-katsu dark:border-kami pointer-events-auto rounded-md text-xl lg:text-2xl bg-kami text-katsu italic px-4 py-1"
+          className="border-2 order-1 lg:order-none row-span-2 active:bg-ki transition border-katsu dark:border-kami pointer-events-auto rounded-md lg:text-2xl bg-kami text-katsu italic px-4 py-1"
         >
           <p>Enter</p>
         </button>
@@ -110,7 +110,7 @@ const Home: NextPage = () => {
           ref={numberEl}
           type="number"
           step="1"
-          className="pointer-events-auto lg:text-2xl lg:col-span-5 text-xl w-full px-4 py-1 border-2 border-katsu dark:border-ki dark:bg-katsu placeholder:italic placeholder:text-gure rounded-md bg-kami"
+          className="pointer-events-auto lg:text-2xl lg:col-span-5 w-full px-4 py-1 border-2 border-katsu dark:border-ki dark:bg-katsu placeholder:italic placeholder:text-gure rounded-md bg-kami"
           placeholder="Enter a number..."
           onKeyDown={handleKeyDown}
         ></input>
