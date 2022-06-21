@@ -39,9 +39,7 @@ const Block = ({ title, version, answers, n }: Props) => {
           answers.map((answer, index) =>
             answer(n).map((promise) => <Line key={index} answer={promise} />)
           )}
-        {!toggled && (
-          <p className="italic text-gure font-black">{"-"} Turned off...</p>
-        )}
+        {!toggled && <p className="italic text-gure">{"-"} Turned off...</p>}
       </div>
     </div>
   );
