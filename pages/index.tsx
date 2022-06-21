@@ -16,7 +16,8 @@ const Home: NextPage = () => {
   const numberEl: RefObject<HTMLInputElement> = createRef();
 
   const randomNumber = () => {
-    const number = Math.floor(Math.random() * 1000);
+    const size = Math.floor(Math.random() * 12);
+    const number = Math.floor(Math.random() * Math.pow(10, size));
 
     if (isNaN(number)) router.push(`/?number=0`, undefined, { shallow: true });
     else router.push(`/?number=${number}`, undefined, { shallow: true });
