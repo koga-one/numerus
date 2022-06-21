@@ -19,12 +19,15 @@ h6 {
   @apply text-ki;
 }
 
-.k-yes {
+.k-yes span {
   @apply text-midori;
 }
-.k-no {
+.k-no span {
   @apply text-aka;
 }
-.k-maybe {
+.k-maybe span {
   @apply text-aoi;
+}
+.k-meh {
+  @apply text-gure text-sm;
 }
