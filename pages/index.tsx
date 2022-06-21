@@ -77,7 +77,7 @@ const Home: NextPage = () => {
         <Block title="Amounts" version={0.1} answers={[Amounts]} n={n} />
       </div>
       <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-40 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
-        <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 bg-kami rounded-md border-2">
+        <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 dark:bg-kami bg-katsu rounded-md border-2">
           <input
             ref={minEl}
             type="number"
@@ -95,7 +95,7 @@ const Home: NextPage = () => {
           <button
             type="button"
             onClick={randomNumber}
-            className="active:bg-ki col-span-2 lg:col-span-1 border-2 dark:border-kami transition border-katsu pointer-events-auto rounded-md bg-kami text-katsu italic px-4 py-1"
+            className="active:bg-ki col-span-2 lg:col-span-1 transition pointer-events-auto rounded-md bg-kami text-katsu italic px-4 py-1"
           >
             <p>Random</p>
           </button>
