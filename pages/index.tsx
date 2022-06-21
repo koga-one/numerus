@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { Block, Layout } from "../components";
-import { IsEven } from "../components/Widgets";
+import { Conversion } from "../components/Widgets";
 
 const Home: NextPage = () => {
   const [n, setN] = useState(0);
@@ -72,8 +72,8 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="HOME">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 container mx-auto px-1 gap-4">
-        <Block title="Primes" version={0.1} answers={[IsEven]} n={n} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 container mx-auto px-1 gap-4">
+        <Block title="Conversion" version={0.1} answers={[Conversion]} n={n} />
       </div>
       <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-40 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
         <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 bg-kami rounded-md border-2">

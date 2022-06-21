@@ -5,7 +5,7 @@ import { Answer } from "./MyTypes";
 type Props = {
   title: string;
   version: number;
-  answers: ((n: number) => Promise<Answer>)[];
+  answers: ((n: number) => Promise<Answer>[])[];
   n: number;
 };
 
@@ -36,9 +36,9 @@ const Block = ({ title, version, answers, n }: Props) => {
       </div>
       <div className="flex flex-col px-4 py-2 gap-1">
         {toggled &&
-          answers.map((answer, index) => (
-            <Line key={index} answer={answer(n)} />
-          ))}
+          answers.map((answer, index) =>
+            answer(n).map((promise) => <Line key={index} answer={promise} />)
+          )}
         {!toggled && (
           <p className="italic text-gure font-black">{"-"} Turned off...</p>
         )}
