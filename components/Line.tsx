@@ -1,27 +1,50 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Answer } from "./MyTypes";
 
 type Props = {
-  answer: Promise<Answer>;
+  file: string;
+  n: number;
 };
 
-const Line = ({ answer }: Props) => {
+const Line = ({ file, n }: Props) => {
   const [finalAnswer, setFinalAnswer] = useState<Answer>({
     state: "maybe",
-    text: "Calculating...",
+    text: "",
   });
 
   useEffect(() => {
-    answer.then((result) => setFinalAnswer(result));
-  }, [answer]);
+    const worker: Worker = new Worker(`./workers/${file}`);
+    worker.postMessage(n);
+    worker.onmessage = (event: MessageEvent) => {
+      setFinalAnswer(event.data);
+      console.log("hey!");
+    };
+    console.log(worker);
+  }, [n]);
 
-  if (typeof finalAnswer.text === "string")
-    return (
-      <p className={`break-all k-${finalAnswer.state}`}>
-        <span>{">"}</span> {finalAnswer.text}
-      </p>
-    );
-  else return finalAnswer.text;
+  // const postMessage = useCallback(() => {
+
+  // }, [worker]);
+
+  return (
+    <ul className={`k-${finalAnswer.state}`}>
+      {!Array.isArray(finalAnswer.text) && (
+        <li>
+          <p className="break-all">
+            <span></span> {finalAnswer.text}
+          </p>
+        </li>
+      )}
+      {Array.isArray(finalAnswer.text) &&
+        finalAnswer.text.map((line) => (
+          <li>
+            <p className="break-all">
+              <span></span> {line}
+            </p>
+          </li>
+        ))}
+    </ul>
+  );
 };
 
 export default Line;

@@ -1,4 +1,4 @@
 export type Answer = {
   state: "yes" | "no" | "maybe" | "meh";
-  text: string | JSX.Element;
+  text: string | string[];
 };

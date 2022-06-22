@@ -5,7 +5,7 @@ const Header = () => {
         NUMERUS
       </h1>
       <p className="italic text-gure text-sm text-center">
-        {"9007199254740993 > n > -9007199254740993"}
+        {"9007199254740993 > N > -9007199254740993"}
       </p>
     </div>
   );

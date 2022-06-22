@@ -8,12 +8,8 @@ import {
   useState,
 } from "react";
 import { Block, Layout } from "../components";
-import { Amounts, Conversion } from "../components/Widgets";
 
 const Home: NextPage = () => {
-  const [n, setN] = useState(0);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(0);
   const router = useRouter();
   const numberEl: RefObject<HTMLInputElement> = createRef();
   const minEl: RefObject<HTMLInputElement> = createRef();
@@ -39,8 +35,32 @@ const Home: NextPage = () => {
   const handleNumber = () => {
     const number = parseInt(numberEl.current!.value);
 
-    if (isNaN(number)) router.push(`/?number=0`, undefined, { shallow: true });
-    else router.push(`/?number=${number}`, undefined, { shallow: true });
+    if (minEl.current && maxEl.current) {
+      const minVal = parseInt(minEl.current.value);
+      const maxVal = parseInt(maxEl.current.value);
+
+      if (isNaN(number))
+        router.push(`/?number=0&min=${minVal}&max=${maxVal}`, undefined, {
+          shallow: true,
+        });
+      else
+        router.push(
+          `/?number=${number}&min=${minVal}&max=${maxVal}`,
+          undefined,
+          {
+            shallow: true,
+          }
+        );
+    } else {
+      if (isNaN(number))
+        router.push(`/?number=0&min=0&max=1000`, undefined, {
+          shallow: true,
+        });
+      else
+        router.push(`/?number=${number}&min=0&max=1000`, undefined, {
+          shallow: true,
+        });
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -50,31 +70,44 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (typeof router.query.number === "string") {
-      setN(parseInt(router.query.number));
-      numberEl.current!.value = n.toString();
-    } else {
-      setN(0);
-      numberEl.current!.value = "0";
-      minEl.current!.value = "0";
-      maxEl.current!.value = "1000";
+    if (numberEl.current && typeof router.query.number === "string") {
+      numberEl.current.value = router.query.number;
     }
-    if (
-      typeof router.query.min === "string" &&
-      typeof router.query.max === "string"
-    ) {
-      setMin(parseInt(router.query.min));
-      setMax(parseInt(router.query.max));
-      minEl.current!.value = min.toString();
-      maxEl.current!.value = max.toString();
+    if (minEl.current && typeof router.query.min === "string") {
+      minEl.current.value = router.query.min;
     }
-  }, [handleNumber]);
+    if (maxEl.current && typeof router.query.max === "string") {
+      maxEl.current.value = router.query.max;
+    }
+  }, [randomNumber, handleNumber]);
 
   return (
     <Layout title="HOME">
       <div className="grid grid-cols-1 lg:grid-cols-2 container mx-auto px-1 gap-4">
-        <Block title="Conversion" version={0.1} answers={[Conversion]} n={n} />
-        <Block title="Amounts" version={0.1} answers={[Amounts]} n={n} />
+        <Block
+          title="Conversion"
+          version={0.1}
+          file={"Conversion.ts"}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Digits"
+          version={0.1}
+          file={"Digits.ts"}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Remainders"
+          version={0.1}
+          file={"Remainders.ts"}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Factorization"
+          version={0.1}
+          file={"Factorization.ts"}
+          n={Number(router.query.number)}
+        />
       </div>
       <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-40 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
         <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 dark:bg-kami bg-katsu rounded-md border-2">

@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Line from "./Line";
-import { Answer } from "./MyTypes";
 
 type Props = {
   title: string;
   version: number;
-  answers: ((n: number) => Promise<Answer>[])[];
+  file: string;
   n: number;
 };
 
-const Block = ({ title, version, answers, n }: Props) => {
+const Block = ({ title, version, file, n }: Props) => {
   const [toggled, setToggled] = useState(true);
 
   const toggleBlock = () => {
@@ -17,7 +16,7 @@ const Block = ({ title, version, answers, n }: Props) => {
   };
 
   return (
-    <div className="border-2 border-gure rounded-md">
+    <div className={`border-2 border-gure rounded-md ${!toggled && "order-1"}`}>
       <div className="bg-gure px-4 py-1 relative">
         <h1 className="text-xl inline italic uppercase">{title}</h1>
         <p className="text-katsu font-black inline"> {version}</p>
@@ -34,11 +33,8 @@ const Block = ({ title, version, answers, n }: Props) => {
           ></button>
         )}
       </div>
-      <div className="flex flex-col px-4 py-2 gap-1">
-        {toggled &&
-          answers.map((answer, index) =>
-            answer(n).map((promise) => <Line key={index} answer={promise} />)
-          )}
+      <div className="flex flex-col px-4 py-2 gap-2">
+        {toggled && <Line file={file} n={n} />}
         {!toggled && <p className="italic text-gure">{"-"} Turned off...</p>}
       </div>
     </div>
