@@ -86,6 +86,8 @@ const Home: NextPage = () => {
     minEl.current?.value,
     maxEl.current?.value,
     numberEl.current?.value,
+    router.query.max,
+    router.query.min,
   ]);
 
   return (

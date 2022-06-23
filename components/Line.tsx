@@ -43,8 +43,8 @@ const Line = ({ func, n }: Props) => {
             </li>
           )}
           {Array.isArray(finalAnswer.text) &&
-            finalAnswer.text.map((line) => (
-              <li>
+            finalAnswer.text.map((line, index) => (
+              <li key={index}>
                 <p className="break-all">
                   <span></span> {line}
                 </p>
