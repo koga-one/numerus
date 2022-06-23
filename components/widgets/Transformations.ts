@@ -71,11 +71,6 @@ function Roman(data: { a: Answer[]; n: number }) {
       "IX",
     ];
 
-  data.a.push({
-    state: "yes",
-    text: `data: ${chunks}`,
-  });
-
   let bigRoman = "";
 
   for (let i = 0; i < chunks.length; i++) {
