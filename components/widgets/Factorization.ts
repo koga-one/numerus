@@ -71,6 +71,7 @@ function FindFactorization(data: { a: Answer[]; n: number }): {
   }
 
   let factors = [`Factorization of N:`];
+  let rawPows = [];
 
   while (data.n > 1) {
     const minFactor = SmallestFactor(data.n);
@@ -80,11 +81,44 @@ function FindFactorization(data: { a: Answer[]; n: number }): {
       pow++;
       data.n /= minFactor;
     }
+    rawPows.push(pow);
     factors.push(`${minFactor}^${pow}`);
   }
 
+  data.a.push({
+    state: "yes",
+    text: `It has ${rawPows.reduce((acc, cur) => acc * (cur + 1), 1)} divisors`,
+  });
+  data.a.push({
+    state: "yes",
+    text: `It has ${rawPows.length} prime divisors`,
+  });
+  data.a.push({
+    state: "yes",
+    text: `It is a perfect root by ${findGCD(rawPows)}`,
+  });
   data.a.push({ state: "yes", text: factors });
   return data;
+}
+
+// Function to return gcd of a and b
+function gcd(a: number, b: number): number {
+  if (a == 0) return b;
+  return gcd(b % a, a);
+}
+
+// Function to find gcd of array
+// of numbers
+function findGCD(arr: number[]): number {
+  let result = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    result = gcd(arr[i], result);
+
+    if (result == 1) {
+      return 1;
+    }
+  }
+  return result;
 }
 
 function SmallestFactor(n: number) {
@@ -112,6 +146,8 @@ async function Factorization(n: number) {
   const p = new Parallel({ a: [{}] as Answer[], n });
   p.require(FindFactorization);
   p.require(SmallestFactor);
+  p.require(gcd);
+  p.require(findGCD);
   await p.spawn((data) => FindFactorization(data));
   return p.data.a;
 }

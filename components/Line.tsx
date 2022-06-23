@@ -29,12 +29,12 @@ const Line = ({ func, n }: Props) => {
 
       trigger().catch((err) => console.log(err));
     }
-  }, [n]);
+  }, [n, func]);
 
   return (
     <div>
-      {finalAnswers.map((finalAnswer) => (
-        <ul className={`k-${finalAnswer.state}`}>
+      {finalAnswers.map((finalAnswer, index) => (
+        <ul key={index} className={`k-${finalAnswer.state}`}>
           {!Array.isArray(finalAnswer.text) && (
             <li>
               <p className="break-all">

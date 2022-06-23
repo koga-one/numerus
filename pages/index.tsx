@@ -79,7 +79,14 @@ const Home: NextPage = () => {
     if (maxEl.current && typeof router.query.max === "string") {
       maxEl.current.value = router.query.max;
     }
-  }, [randomNumber, handleNumber]);
+  }, [
+    minEl,
+    maxEl,
+    numberEl,
+    minEl.current?.value,
+    maxEl.current?.value,
+    numberEl.current?.value,
+  ]);
 
   return (
     <Layout title="HOME">
