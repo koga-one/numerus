@@ -2,10 +2,17 @@ import { Answer } from "../MyTypes";
 import Parallel from "paralleljs";
 
 function Backwards(data: { a: Answer[]; n: number }) {
-  data.a.push({
-    state: "yes",
-    text: `Backwards: ${data.n.toString().split("").reverse().join("")}`,
-  });
+  if (data.n < 0) {
+    data.a.push({
+      state: "yes",
+      text: `Backwards: -${(-data.n).toString().split("").reverse().join("")}`,
+    });
+  } else {
+    data.a.push({
+      state: "yes",
+      text: `Backwards: ${data.n.toString().split("").reverse().join("")}`,
+    });
+  }
   return data;
 }
 
@@ -33,6 +40,11 @@ function RomanChunks(digits: string[]): string[] {
 }
 
 function Roman(data: { a: Answer[]; n: number }) {
+  if (data.n <= 0) {
+    data.a.push({ state: "no", text: "Roman: N needs to be greater than 0!" });
+    return data;
+  }
+
   let chunks = RomanChunks(
       String(+data.n)
         .split("")
