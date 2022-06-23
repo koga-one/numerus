@@ -7,6 +7,7 @@ import {
   Digits,
   Factorization,
   Remainders,
+  Transformations,
 } from "../components/widgets";
 
 const Home: NextPage = () => {
@@ -88,6 +89,7 @@ const Home: NextPage = () => {
     numberEl.current?.value,
     router.query.max,
     router.query.min,
+    router.query.number,
   ]);
 
   return (
@@ -113,8 +115,14 @@ const Home: NextPage = () => {
         />
         <Block
           title="Factorization"
-          version={0.1}
+          version={0.2}
           func={Factorization}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Transformations"
+          version={0.1}
+          func={Transformations}
           n={Number(router.query.number)}
         />
       </div>
