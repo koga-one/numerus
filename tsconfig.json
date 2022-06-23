@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/workers/Conversion.js"
+    "components/widgets/Conversion.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import {
-  createRef,
-  KeyboardEvent,
-  RefObject,
-  useEffect,
-  useState,
-} from "react";
+import { createRef, KeyboardEvent, RefObject, useEffect } from "react";
 import { Block, Layout } from "../components";
+import {
+  Conversion,
+  Digits,
+  Factorization,
+  Remainders,
+} from "../components/widgets";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -87,25 +87,25 @@ const Home: NextPage = () => {
         <Block
           title="Conversion"
           version={0.1}
-          file={"Conversion.ts"}
+          func={Conversion}
           n={Number(router.query.number)}
         />
         <Block
           title="Digits"
           version={0.1}
-          file={"Digits.ts"}
+          func={Digits}
           n={Number(router.query.number)}
         />
         <Block
           title="Remainders"
           version={0.1}
-          file={"Remainders.ts"}
+          func={Remainders}
           n={Number(router.query.number)}
         />
         <Block
           title="Factorization"
           version={0.1}
-          file={"Factorization.ts"}
+          func={Factorization}
           n={Number(router.query.number)}
         />
       </div>

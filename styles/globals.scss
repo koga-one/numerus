@@ -19,29 +19,29 @@ h6 {
   @apply text-ki;
 }
 
-.k-yes li:first-child span {
-  @apply text-midori;
-  &::before {
-    content: ">";
-  }
-}
-.k-yes li:not(:first-child) {
-  @apply text-sm;
+$states: (
+  "yes": "midori",
+  "no": "aka",
+  "maybe": "aoi",
+  "meh": "gure",
+);
 
-  span {
-    @apply text-gure;
-    &::before {
-      content: "|";
+@each $state, $color in $states {
+  .k-#{$state} li {
+    &:not(:first-child) {
+      @apply text-sm;
+      span {
+        @apply text-gure;
+        &::before {
+          content: "|";
+        }
+      }
+    }
+    &:first-child span {
+      @apply text-#{$color};
+      &::before {
+        content: ">";
+      }
     }
   }
-}
-
-.k-no li:first-child span {
-  @apply text-aka;
-}
-.k-maybe li:first-child span {
-  @apply text-aoi;
-}
-.k-meh li:first-child {
-  @apply text-gure text-sm;
 }

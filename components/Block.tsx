@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Line from "./Line";
+import { Answer } from "./MyTypes";
 
 type Props = {
   title: string;
   version: number;
-  file: string;
+  func: (n: number) => Promise<Answer[]>;
   n: number;
 };
 
-const Block = ({ title, version, file, n }: Props) => {
+const Block = ({ title, version, func, n }: Props) => {
   const [toggled, setToggled] = useState(true);
 
   const toggleBlock = () => {
@@ -16,7 +17,11 @@ const Block = ({ title, version, file, n }: Props) => {
   };
 
   return (
-    <div className={`border-2 border-gure rounded-md ${!toggled && "order-1"}`}>
+    <div
+      className={`border-2 min-h-[20rem] border-gure rounded-md ${
+        !toggled && "order-1"
+      }`}
+    >
       <div className="bg-gure px-4 py-1 relative">
         <h1 className="text-xl inline italic uppercase">{title}</h1>
         <p className="text-katsu font-black inline"> {version}</p>
@@ -34,7 +39,7 @@ const Block = ({ title, version, file, n }: Props) => {
         )}
       </div>
       <div className="flex flex-col px-4 py-2 gap-2">
-        {toggled && <Line file={file} n={n} />}
+        {toggled && <Line func={func} n={n} />}
         {!toggled && <p className="italic text-gure">{"-"} Turned off...</p>}
       </div>
     </div>
