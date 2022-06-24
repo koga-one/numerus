@@ -4,14 +4,13 @@ import Header from "./Header";
 
 type Props = {
   children?: JSX.Element | JSX.Element[];
-  title: string;
 };
 
-const Layout = ({ children, title }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <div>
       <Head>
-        <title>{title + " // NUMERUS"}</title>
+        <title>NUMERUS // K.O</title>
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <Header />

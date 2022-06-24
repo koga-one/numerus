@@ -7,3 +7,4 @@ export { default as Operations } from "./Operations";
 export { default as Geometry } from "./Geometry";
 export { default as DumbUnits } from "./DumbUnits";
 export { default as Comparisons } from "./Comparisons";
+export { default as Info } from "./Info";

@@ -12,6 +12,7 @@ import {
   Geometry,
   DumbUnits,
   Comparisons,
+  Info,
 } from "../components/widgets";
 
 const Home: NextPage = () => {
@@ -97,13 +98,13 @@ const Home: NextPage = () => {
   ]);
 
   return (
-    <Layout title="HOME">
+    <Layout>
       <div className="container mx-auto grid auto-rows-[2rem] grid-cols-1 gap-4 px-1 md:grid-cols-2 lg:grid-cols-3">
         <Block
           title="Quick Operations"
           info="Useful number operations"
           version={0.1}
-          rows={10}
+          rows={11}
           func={Operations}
           n={Number(router.query.number)}
         />
@@ -111,7 +112,7 @@ const Home: NextPage = () => {
           title="Factorization"
           info="Divisors, factorization, primes, etc."
           version={0.2}
-          rows={6}
+          rows={8}
           func={Factorization}
           n={Number(router.query.number)}
         />
@@ -119,7 +120,7 @@ const Home: NextPage = () => {
           title="Conversion"
           info="Converts your number to other bases"
           version={0.1}
-          rows={8}
+          rows={9}
           func={Conversion}
           n={Number(router.query.number)}
         />
@@ -127,7 +128,7 @@ const Home: NextPage = () => {
           title="Digits"
           info="Info about the digits of the number"
           version={0.1}
-          rows={6}
+          rows={9}
           func={Digits}
           n={Number(router.query.number)}
         />
@@ -135,7 +136,7 @@ const Home: NextPage = () => {
           title="Dumb Units"
           info="(N is treated as meters)"
           version={0.1}
-          rows={18}
+          rows={21}
           func={DumbUnits}
           n={Number(router.query.number)}
         />
@@ -143,7 +144,7 @@ const Home: NextPage = () => {
           title="Remainders"
           info="The remainder of N by other numbers"
           version={0.1}
-          rows={8}
+          rows={9}
           func={Remainders}
           n={Number(router.query.number)}
         />
@@ -151,7 +152,7 @@ const Home: NextPage = () => {
           title="Comparisons"
           info="N compared to real-life things!"
           version={0.1}
-          rows={9}
+          rows={10}
           func={Comparisons}
           n={Number(router.query.number)}
         />
@@ -167,8 +168,16 @@ const Home: NextPage = () => {
           title="Transformations"
           info="Transforming the original number into cool stuff"
           version={0.2}
-          rows={5}
+          rows={6}
           func={Transformations}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="More to come!"
+          info="About the website"
+          version={0.1}
+          rows={16}
+          func={Info}
           n={Number(router.query.number)}
         />
       </div>

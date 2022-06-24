@@ -28,7 +28,7 @@ const Block = ({ title, info, version, rows, func, n }: Props) => {
           grid-row: span ${rows};
         }
         .no-auto-row {
-          grid-row: span 2;
+          grid-row: span 3;
         }
       `}</style>
       <div className="bg-gure py-1">
@@ -55,7 +55,11 @@ const Block = ({ title, info, version, rows, func, n }: Props) => {
       </div>
       <div className="flex flex-col gap-2 px-4 py-2">
         {toggled && <Line func={func} n={n} />}
-        {!toggled && <p className="italic text-gure">{"-"} Turned off...</p>}
+        {!toggled && (
+          <p className="py-1 font-black italic text-gure">
+            {"-"} Turned off...
+          </p>
+        )}
       </div>
     </div>
   );

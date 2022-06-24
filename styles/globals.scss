@@ -29,7 +29,7 @@ $states: (
 @each $state, $color in $states {
   .k-#{$state} li {
     &:not(:first-child) {
-      @apply text-sm;
+      @apply my-1 text-sm;
       span {
         @apply text-gure;
         &::before {
