@@ -11,6 +11,7 @@ import {
   Operations,
   Geometry,
   DumbUnits,
+  Comparisons,
 } from "../components/widgets";
 
 const Home: NextPage = () => {
@@ -100,6 +101,7 @@ const Home: NextPage = () => {
       <div className="container mx-auto grid auto-rows-[2rem] grid-cols-1 gap-4 px-1 md:grid-cols-2 lg:grid-cols-3">
         <Block
           title="Quick Operations"
+          info="Useful number operations"
           version={0.1}
           rows={10}
           func={Operations}
@@ -107,6 +109,7 @@ const Home: NextPage = () => {
         />
         <Block
           title="Factorization"
+          info="Divisors, factorization, primes, etc."
           version={0.2}
           rows={6}
           func={Factorization}
@@ -114,6 +117,7 @@ const Home: NextPage = () => {
         />
         <Block
           title="Conversion"
+          info="Converts your number to other bases"
           version={0.1}
           rows={8}
           func={Conversion}
@@ -121,6 +125,7 @@ const Home: NextPage = () => {
         />
         <Block
           title="Digits"
+          info="Info about the digits of the number"
           version={0.1}
           rows={6}
           func={Digits}
@@ -128,6 +133,7 @@ const Home: NextPage = () => {
         />
         <Block
           title="Dumb Units"
+          info="(N is treated as meters)"
           version={0.1}
           rows={18}
           func={DumbUnits}
@@ -135,13 +141,23 @@ const Home: NextPage = () => {
         />
         <Block
           title="Remainders"
+          info="The remainder of N by other numbers"
           version={0.1}
           rows={8}
           func={Remainders}
           n={Number(router.query.number)}
         />
         <Block
+          title="Comparisons"
+          info="N compared to real-life things!"
+          version={0.1}
+          rows={9}
+          func={Comparisons}
+          n={Number(router.query.number)}
+        />
+        <Block
           title="Geometry"
+          info="Some cool geometry-related operations"
           version={0.1}
           rows={7}
           func={Geometry}
@@ -149,6 +165,7 @@ const Home: NextPage = () => {
         />
         <Block
           title="Transformations"
+          info="Transforming the original number into cool stuff"
           version={0.2}
           rows={5}
           func={Transformations}
@@ -161,14 +178,14 @@ const Home: NextPage = () => {
             ref={minEl}
             type="number"
             step="1"
-            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
+            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm outline-none placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
             placeholder="Minimum"
           ></input>
           <input
             ref={maxEl}
             type="number"
             step="1"
-            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
+            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm outline-none placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
             placeholder="Maximum"
           ></input>{" "}
           <button
@@ -190,7 +207,7 @@ const Home: NextPage = () => {
           ref={numberEl}
           type="number"
           step="1"
-          className="pointer-events-auto w-full rounded-md border-2 border-gure bg-ki px-4 py-1 placeholder:italic placeholder:text-gure dark:border-ki dark:bg-kami dark:bg-katsu lg:col-span-5 lg:text-2xl"
+          className="pointer-events-auto w-full rounded-md border-2 border-gure bg-ki px-4 py-1 outline-none placeholder:italic placeholder:text-gure dark:border-ki dark:bg-kami dark:bg-katsu lg:col-span-5 lg:text-2xl"
           placeholder="Enter a number..."
           onKeyDown={handleKeyDown}
         ></input>

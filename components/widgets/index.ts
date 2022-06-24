@@ -6,3 +6,4 @@ export { default as Transformations } from "./Transformations";
 export { default as Operations } from "./Operations";
 export { default as Geometry } from "./Geometry";
 export { default as DumbUnits } from "./DumbUnits";
+export { default as Comparisons } from "./Comparisons";
