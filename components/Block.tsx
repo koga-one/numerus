@@ -18,30 +18,40 @@ const Block = ({ title, version, rows, func, n }: Props) => {
   };
 
   return (
-    <div className="overflow-auto rounded-md border-2 border-gure">
+    <div
+      className={`overflow-auto rounded-md rounded-b-md border-2 border-t-0 border-gure  ${
+        toggled ? "auto-row" : "no-auto-row"
+      }`}
+    >
       <style jsx>{`
-        div {
+        .auto-row {
           grid-row: span ${rows};
         }
+        .no-auto-row {
+          grid-row: span 2;
+        }
       `}</style>
-      <div className="relative bg-gure px-4 py-1">
-        <h1 className="inline text-xl uppercase italic">{title}</h1>
-        <p className="inline text-kami dark:font-black dark:text-katsu">
-          {" "}
-          {version}
-        </p>
-        {toggled && (
+      <div className="flex content-center bg-gure py-1">
+        <h1 className="px-4 text-xl uppercase italic">
+          {title}
+          <span className="text-sm text-kami dark:font-black dark:text-katsu">
+            {" "}
+            {version}
+          </span>
+        </h1>
+        <div className="ml-auto flex gap-1 px-1 text-sm font-black">
+          <button className={`rounded-md bg-katsu`}>
+            <p className="px-1">Info</p>
+          </button>
           <button
-            className="absolute right-2 bottom-1/2 h-4 w-4 translate-y-1/2 rounded-md bg-midori"
+            className={`rounded-md text-katsu ${
+              toggled ? "bg-midori" : "bg-aka"
+            }`}
             onClick={toggleBlock}
-          ></button>
-        )}
-        {!toggled && (
-          <button
-            className="absolute right-2 bottom-1/2 h-4 w-4 translate-y-1/2 rounded-md bg-aka"
-            onClick={toggleBlock}
-          ></button>
-        )}
+          >
+            <p className="px-1">{toggled ? "On" : "Off"}</p>
+          </button>
+        </div>
       </div>
       <div className="flex flex-col gap-2 px-4 py-2">
         {toggled && <Line func={func} n={n} />}
