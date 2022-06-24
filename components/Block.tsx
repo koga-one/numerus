@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import Line from "./Line";
 import { Answer } from "./MyTypes";
 
 type Props = {
   title: string;
   version: number;
+  rows: number;
   func: (n: number) => Promise<Answer[]>;
   n: number;
 };
 
-const Block = ({ title, version, func, n }: Props) => {
+const Block = ({ title, version, rows, func, n }: Props) => {
   const [toggled, setToggled] = useState(true);
 
   const toggleBlock = () => {
@@ -17,28 +18,32 @@ const Block = ({ title, version, func, n }: Props) => {
   };
 
   return (
-    <div
-      className={`border-2 min-h-[20rem] border-gure rounded-md ${
-        !toggled && "order-1"
-      }`}
-    >
-      <div className="bg-gure px-4 py-1 relative">
-        <h1 className="text-xl inline italic uppercase">{title}</h1>
-        <p className="text-katsu font-black inline"> {version}</p>
+    <div className="overflow-auto rounded-md border-2 border-gure">
+      <style jsx>{`
+        div {
+          grid-row: span ${rows};
+        }
+      `}</style>
+      <div className="relative bg-gure px-4 py-1">
+        <h1 className="inline text-xl uppercase italic">{title}</h1>
+        <p className="inline text-kami dark:font-black dark:text-katsu">
+          {" "}
+          {version}
+        </p>
         {toggled && (
           <button
-            className="bg-midori absolute right-2 w-4 rounded-md h-4 bottom-1/2 translate-y-1/2"
+            className="absolute right-2 bottom-1/2 h-4 w-4 translate-y-1/2 rounded-md bg-midori"
             onClick={toggleBlock}
           ></button>
         )}
         {!toggled && (
           <button
-            className="bg-aka absolute right-2 w-4 rounded-md h-4 bottom-1/2 translate-y-1/2"
+            className="absolute right-2 bottom-1/2 h-4 w-4 translate-y-1/2 rounded-md bg-aka"
             onClick={toggleBlock}
           ></button>
         )}
       </div>
-      <div className="flex flex-col px-4 py-2 gap-2">
+      <div className="flex flex-col gap-2 px-4 py-2">
         {toggled && <Line func={func} n={n} />}
         {!toggled && <p className="italic text-gure">{"-"} Turned off...</p>}
       </div>

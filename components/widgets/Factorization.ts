@@ -85,18 +85,27 @@ function FindFactorization(data: { a: Answer[]; n: number }): {
     factors.push(`${minFactor}^${pow}`);
   }
 
+  let divisors = rawPows.reduce((acc, cur) => acc * (cur + 1), 1);
+
   data.a.push({
     state: "yes",
-    text: `It has ${rawPows.reduce((acc, cur) => acc * (cur + 1), 1)} divisors`,
+    text: `It has ${divisors} divisors`,
   });
-  data.a.push({
-    state: "yes",
-    text: `It has ${rawPows.length} prime divisors`,
-  });
-  data.a.push({
-    state: "yes",
-    text: `It is a perfect root by ${findGCD(rawPows)}`,
-  });
+  if (divisors > 2) {
+    data.a.push({
+      state: "yes",
+      text: `It has ${rawPows.length} prime divisors`,
+    });
+    data.a.push({
+      state: "yes",
+      text: `It is a perfect root by ${findGCD(rawPows)}`,
+    });
+  } else
+    data.a.push({
+      state: "yes",
+      text: `It is a prime`,
+    });
+
   data.a.push({ state: "yes", text: factors });
   return data;
 }

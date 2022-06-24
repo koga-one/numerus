@@ -7,7 +7,7 @@
 
 html,
 body {
-  @apply bg-kami dark:bg-katsu text-katsu dark:text-kami font-jetbrains;
+  @apply bg-kami font-jetbrains text-katsu dark:bg-katsu dark:text-kami;
 }
 
 h1,
@@ -44,4 +44,19 @@ $states: (
       }
     }
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-kami dark:bg-katsu;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-ki;
 }

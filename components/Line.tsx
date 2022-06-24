@@ -34,11 +34,11 @@ const Line = ({ func, n }: Props) => {
   return (
     <div>
       {finalAnswers.map((finalAnswer, index) => (
-        <ul key={index} className={`k-${finalAnswer.state}`}>
+        <ul key={index} className={`mb-1 k-${finalAnswer.state}`}>
           {!Array.isArray(finalAnswer.text) && (
             <li>
               <p className="break-all">
-                <span></span> {finalAnswer.text}
+                <span className="font-black"></span> {finalAnswer.text}
               </p>
             </li>
           )}
@@ -46,7 +46,7 @@ const Line = ({ func, n }: Props) => {
             finalAnswer.text.map((line, index) => (
               <li key={index}>
                 <p className="break-all">
-                  <span></span> {line}
+                  <span className="font-black"></span> {line}
                 </p>
               </li>
             ))}

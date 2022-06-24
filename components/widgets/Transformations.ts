@@ -104,13 +104,43 @@ function Roman(data: { a: Answer[]; n: number }) {
   return data;
 }
 
+function Emoji(data: { a: Answer[]; n: number }) {
+  const keys = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+
+  data.a.push({
+    state: "yes",
+    text: `Emojified: ${data.n
+      .toString()
+      .split("")
+      .reduce((acc, cur) => acc + keys[+cur], "")}`,
+  });
+  return data;
+}
+
+function Letterfy(data: { a: Answer[]; n: number }) {
+  const keys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+
+  data.a.push({
+    state: "yes",
+    text: `Letterfied: ${data.n
+      .toString()
+      .split("")
+      .reduce((acc, cur) => acc + keys[+cur], "")}`,
+  });
+  return data;
+}
+
 async function Transformations(n: number) {
   const p = new Parallel({ a: [{}] as Answer[], n });
   p.require(Backwards);
   p.require(RomanChunks);
   p.require(Roman);
+  p.require(Emoji);
+  p.require(Letterfy);
   await p.spawn((data) => Backwards(data));
   await p.spawn((data) => Roman(data));
+  await p.spawn((data) => Emoji(data));
+  await p.spawn((data) => Letterfy(data));
   return p.data.a;
 }
 

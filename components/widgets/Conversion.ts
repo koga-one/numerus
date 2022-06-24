@@ -2,7 +2,7 @@ import { Answer } from "../MyTypes";
 import Parallel from "paralleljs";
 
 function SingleConversion(data: { a: Answer[]; n: number }) {
-  const chosenBases = [2, 3, 6, 8, 12, 16, 20, 32];
+  const chosenBases = [2, 3, 4, 5, 6, 7, 8, 9, 12, 16, 20, 32];
   let conversions = [`N in ${chosenBases.length} different bases:`];
 
   for (let i = 0; i < chosenBases.length; i++) {

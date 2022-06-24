@@ -8,6 +8,9 @@ import {
   Factorization,
   Remainders,
   Transformations,
+  Operations,
+  Geometry,
+  DumbUnits,
 } from "../components/widgets";
 
 const Home: NextPage = () => {
@@ -94,58 +97,84 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="HOME">
-      <div className="grid grid-cols-1 lg:grid-cols-2 container mx-auto px-1 gap-4">
+      <div className="container mx-auto grid auto-rows-[2rem] grid-cols-1 gap-4 px-1 md:grid-cols-2 lg:grid-cols-3">
+        <Block
+          title="Quick Operations"
+          version={0.1}
+          rows={10}
+          func={Operations}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Factorization"
+          version={0.2}
+          rows={6}
+          func={Factorization}
+          n={Number(router.query.number)}
+        />
         <Block
           title="Conversion"
           version={0.1}
+          rows={8}
           func={Conversion}
           n={Number(router.query.number)}
         />
         <Block
           title="Digits"
           version={0.1}
+          rows={6}
           func={Digits}
+          n={Number(router.query.number)}
+        />
+        <Block
+          title="Dumb Units"
+          version={0.1}
+          rows={18}
+          func={DumbUnits}
           n={Number(router.query.number)}
         />
         <Block
           title="Remainders"
           version={0.1}
+          rows={8}
           func={Remainders}
           n={Number(router.query.number)}
         />
         <Block
-          title="Factorization"
-          version={0.2}
-          func={Factorization}
+          title="Geometry"
+          version={0.1}
+          rows={7}
+          func={Geometry}
           n={Number(router.query.number)}
         />
         <Block
           title="Transformations"
-          version={0.1}
+          version={0.2}
+          rows={5}
           func={Transformations}
           n={Number(router.query.number)}
         />
       </div>
-      <nav className="grid grid-cols-1 lg:grid-cols-6 bottom-1 lg:bottom-8 h-40 lg:h-16 sticky px-1 lg:px-40 my-4 lg:my-16 pointer-events-none z-50 mx-auto container gap-1">
-        <div className="grid gap-1 grid-cols-2 lg:grid-cols-5 lg:col-span-5 dark:bg-kami bg-katsu rounded-md border-2">
+      <nav className="container pointer-events-none sticky bottom-1 z-50 my-4 mx-auto grid h-40 grid-cols-1 gap-1 px-1 lg:bottom-8 lg:my-16 lg:h-16 lg:grid-cols-6 lg:px-40">
+        <div className="grid grid-cols-2 gap-0.5 rounded-md border-2 border-gure bg-gure dark:border-kami dark:bg-kami lg:col-span-5 lg:grid-cols-5">
           <input
             ref={minEl}
             type="number"
             step="1"
-            className="pointer-events-auto lg:col-span-2 px-4 py-1 border-katsu dark:border-kami dark:bg-katsu placeholder:italic placeholder:text-gure rounded-md bg-kami"
+            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
             placeholder="Minimum"
           ></input>
           <input
             ref={maxEl}
             type="number"
             step="1"
-            className="pointer-events-auto lg:col-span-2 px-4 py-1 border-katsu dark:border-kami dark:bg-katsu placeholder:italic placeholder:text-gure rounded-md bg-kami"
+            className="pointer-events-auto rounded-md border-gure bg-kami px-4 py-1 text-sm placeholder:italic placeholder:text-gure dark:border-kami dark:bg-katsu lg:col-span-2 lg:text-base"
             placeholder="Maximum"
           ></input>{" "}
           <button
             type="button"
             onClick={randomNumber}
-            className="active:bg-ki col-span-2 lg:col-span-1 transition pointer-events-auto rounded-md bg-kami text-katsu italic px-4 py-1"
+            className="pointer-events-auto col-span-2 rounded-md bg-gure px-4 py-1 text-sm italic text-kami transition active:bg-ki lg:col-span-1 lg:text-base"
           >
             <p>Random</p>
           </button>
@@ -153,7 +182,7 @@ const Home: NextPage = () => {
         <button
           type="button"
           onClick={handleNumber}
-          className="border-2 order-1 lg:order-none row-span-2 active:bg-ki transition border-katsu dark:border-kami pointer-events-auto rounded-md lg:text-2xl bg-kami text-katsu italic px-4 py-1"
+          className="pointer-events-auto order-1 row-span-2 rounded-md border-2 border-gure bg-gure px-4 py-1 italic text-kami transition active:bg-ki dark:border-kami lg:order-none lg:text-2xl"
         >
           <p>Enter</p>
         </button>
@@ -161,7 +190,7 @@ const Home: NextPage = () => {
           ref={numberEl}
           type="number"
           step="1"
-          className="pointer-events-auto lg:text-2xl lg:col-span-5 w-full px-4 py-1 border-2 border-katsu dark:border-ki dark:bg-katsu placeholder:italic placeholder:text-gure rounded-md bg-kami"
+          className="pointer-events-auto w-full rounded-md border-2 border-gure bg-ki px-4 py-1 placeholder:italic placeholder:text-gure dark:border-ki dark:bg-kami dark:bg-katsu lg:col-span-5 lg:text-2xl"
           placeholder="Enter a number..."
           onKeyDown={handleKeyDown}
         ></input>
