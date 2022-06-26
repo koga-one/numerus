@@ -30,7 +30,7 @@ function Powers(data: { a: Answer[]; n: number }) {
   });
   if (data.n <= 100) {
     let f = 1;
-    for (let i = 1; i < data.n; i++) f *= i;
+    for (let i = 1; i <= data.n; i++) f *= i;
     data.a.push({
       state: "yes",
       text: `N!: ${f}`,

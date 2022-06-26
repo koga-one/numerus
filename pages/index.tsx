@@ -120,7 +120,7 @@ const Home: NextPage = () => {
           title="Conversion"
           info="Converts your number to other bases"
           version={0.1}
-          rows={9}
+          rows={10}
           func={Conversion}
           n={Number(router.query.number)}
         />
@@ -144,7 +144,7 @@ const Home: NextPage = () => {
           title="Remainders"
           info="The remainder of N by other numbers"
           version={0.1}
-          rows={9}
+          rows={10}
           func={Remainders}
           n={Number(router.query.number)}
         />
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
           title="Geometry"
           info="Some cool geometry-related operations"
           version={0.1}
-          rows={7}
+          rows={9}
           func={Geometry}
           n={Number(router.query.number)}
         />
@@ -168,7 +168,7 @@ const Home: NextPage = () => {
           title="Transformations"
           info="Transforming the original number into cool stuff"
           version={0.2}
-          rows={6}
+          rows={7}
           func={Transformations}
           n={Number(router.query.number)}
         />
@@ -176,7 +176,7 @@ const Home: NextPage = () => {
           title="More to come!"
           info="About the website"
           version={0.1}
-          rows={16}
+          rows={19}
           func={Info}
           n={Number(router.query.number)}
         />
